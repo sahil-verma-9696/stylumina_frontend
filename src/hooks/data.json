@@ -1,0 +1,242 @@
+{
+    "success": true,
+    "feature_data": {
+        "Watches": [
+            {
+                "feature_name": "Calendar Type",
+                "feature_value": "Day-Date-Month-Year",
+                "confidence_score": 0.99996574221806
+            },
+            {
+                "feature_name": "Department",
+                "feature_value": "Mens",
+                "confidence_score": 0.99996574221806
+            },
+            {
+                "feature_name": "Display Type",
+                "feature_value": "Analog-Digital",
+                "confidence_score": 0.99996574221806
+            },
+            {
+                "feature_name": "Case Material",
+                "feature_value": "Wood",
+                "confidence_score": 0.9249793815226697
+            },
+            {
+                "feature_name": "Crystal Material",
+                "feature_value": "Tempered Glass",
+                "confidence_score": 0.9249793815226697
+            },
+            {
+                "feature_name": "Movement",
+                "feature_value": "Quartz",
+                "confidence_score": 0.99996574221806
+            },
+            {
+                "feature_name": "Case Shape",
+                "feature_value": "Octagonal",
+                "confidence_score": 0.99996574221806
+            },
+            {
+                "feature_name": "Collection",
+                "feature_value": "Silver Diamond",
+                "confidence_score": 0.8911172022247671
+            },
+            {
+                "feature_name": "Shape",
+                "feature_value": "Octagon",
+                "confidence_score": 0.938384303356422
+            },
+            {
+                "feature_name": "Age Range Description",
+                "feature_value": "Adult",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Colour",
+                "feature_value": "Black",
+                "confidence_score": 0.8413609036019712
+            },
+            {
+                "feature_name": "Band Color",
+                "feature_value": "orange",
+                "confidence_score": 0.8413609036019712
+            },
+            {
+                "feature_name": "Box Contents",
+                "feature_value": "LED WATCH",
+                "confidence_score": 0.8027879267190725
+            },
+            {
+                "feature_name": "Band Material Type",
+                "feature_value": "Silicone",
+                "confidence_score": 0.8413609036019712
+            },
+            {
+                "feature_name": "Target Audience",
+                "feature_value": "Unisex Teen",
+                "confidence_score": 0.8413609036019712
+            },
+            {
+                "feature_name": "Style",
+                "feature_value": "strap",
+                "confidence_score": 0.8413609036019712
+            },
+            {
+                "feature_name": "Clasp Type",
+                "feature_value": "Push Button Deployment Clasp",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Metal",
+                "feature_value": "Stainless Steel",
+                "confidence_score": 0.877525466873125
+            },
+            {
+                "feature_name": "Stone",
+                "feature_value": "Stainless Steel",
+                "confidence_score": 0.877525466873125
+            },
+            {
+                "feature_name": "Theme",
+                "feature_value": "Fashion",
+                "confidence_score": 0.8609939658235364
+            },
+            {
+                "feature_name": "Band Style1 - Band Style5",
+                "feature_value": "Classic",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Power Source",
+                "feature_value": "Motion",
+                "confidence_score": 0.9016972645698779
+            },
+            {
+                "feature_name": "Batteries Included",
+                "feature_value": "Yes",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Batteries Required",
+                "feature_value": "Yes",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Strap Material",
+                "feature_value": "Resin",
+                "confidence_score": 0.938384303356422
+            },
+            {
+                "feature_name": "Glass Material",
+                "feature_value": "Acrylic",
+                "confidence_score": 0.9161370842677895
+            },
+            {
+                "feature_name": "Occasion",
+                "feature_value": "Everyday Essentials",
+                "confidence_score": 0.9165662569455785
+            },
+            {
+                "feature_name": "Dial Pattern",
+                "feature_value": "Textured",
+                "confidence_score": 0.914589834667329
+            },
+            {
+                "feature_name": "Dial Shape",
+                "feature_value": "Asymmetric",
+                "confidence_score": 0.9161370842677895
+            },
+            {
+                "feature_name": "Dial Material",
+                "feature_value": "Acetate",
+                "confidence_score": 0.9161370842677895
+            },
+            {
+                "feature_name": "Strap Closure",
+                "feature_value": "Tang",
+                "confidence_score": 0.914589834667329
+            },
+            {
+                "feature_name": "Strap Style",
+                "feature_value": "Cuff",
+                "confidence_score": 0.9256208251026365
+            },
+            {
+                "feature_name": "Make",
+                "feature_value": "Swiss Made",
+                "confidence_score": 0.9016972645698779
+            },
+            {
+                "feature_name": "Type",
+                "feature_value": "Hybrid",
+                "confidence_score": 0.9244609436403688
+            },
+            {
+                "feature_name": "Scratch Resistance",
+                "feature_value": "Yes",
+                "confidence_score": 0.9016972645698779
+            },
+            {
+                "feature_name": "Sustainable",
+                "feature_value": "Regular",
+                "confidence_score": 0.9016972645698779
+            },
+            {
+                "feature_name": "Display",
+                "feature_value": "Analogue and Digital",
+                "confidence_score": 0.914589834667329
+            },
+            {
+                "feature_name": "Case Material1 - Case Material2",
+                "feature_value": "Stainless Steel",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Movement Type",
+                "feature_value": "Quartz",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Strap Type",
+                "feature_value": "BRACELET",
+                "confidence_score": 0.9009327449182398
+            },
+            {
+                "feature_name": "Dial Type",
+                "feature_value": "Analog + Digital",
+                "confidence_score": 0.938384303356422
+            },
+            {
+                "feature_name": "Strap Color",
+                "feature_value": "Green",
+                "confidence_score": 0.9165662569455785
+            },
+            {
+                "feature_name": "Dial Color",
+                "feature_value": "Olive",
+                "confidence_score": 0.9209476247784608
+            },
+            {
+                "feature_name": "Display Technology",
+                "feature_value": "Analog",
+                "confidence_score": 0.7853612790639449
+            },
+            {
+                "feature_name": "Material",
+                "feature_value": "Metal",
+                "confidence_score": 0.8054887138223867
+            },
+            {
+                "feature_name": "Device interface - primary",
+                "feature_value": "Buttons",
+                "confidence_score": 0.8565752317973165
+            },
+            {
+                "feature_name": "Pattern",
+                "feature_value": "Classic",
+                "confidence_score": 0.8609939658235364
+            }
+        ]
+    }
+}

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,body,#root{
+  width: 100%;
+  height: 100%;
+}
+
 /* Scrollbar Track */
 ::-webkit-scrollbar {
     width: 6px;

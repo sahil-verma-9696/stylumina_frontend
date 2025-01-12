@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { clearAlert } from "../store/slices/imageSlice";
+import { clearAlert } from "../store/slices/alertSlice";
 
 const CustomAlert = () => {
   const dispatch = useDispatch();
-  const { alert } = useSelector((state) => state.image);
+  const { alert } = useSelector((state) => state.alert);
 
   React.useEffect(() => {
     if (alert) {

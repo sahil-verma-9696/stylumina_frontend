@@ -1,24 +1,20 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  clearImage,
-  setApiResponse,
-  showAlert,
-  setLoading,
-} from "../store/slices/imageSlice";
+import { clearImage } from "../store/slices/imageSlice";
 import useApiCall from "../hooks/useApiCall";
 import CustomAlert from "../components/CustomAlert";
 import ShimmerEffect from "../components/ShimmerEffect";
 import ImageUploader from "../components/ImageUploader";
-import ApiResponse from "../components/ApiResponse"; // Import the new component
+import ApiResponse from "../components/ApiResponse";
 import { setFeedback } from "../store/slices/feedbackSlice";
+import { showAlert } from "../store/slices/alertSlice";
 
 const MainPage = () => {
   const dispatch = useDispatch();
   const callApi = useApiCall();
+  const [showResponse, setShowResponse] = React.useState(false);
 
   const { selectedImage, base64 } = useSelector((state) => state.image);
-  const { apiResponse, isLoading } = useSelector((state) => state.image);
 
   const handleSubmit = async () => {
     if (!selectedImage) {
@@ -29,47 +25,20 @@ const MainPage = () => {
     }
 
     try {
-      setLoading(true); // Start shimmer effect
-      const response = await callApi(
-        "http://localhost:5000/api/upload",
-        "POST",
-        { image: base64.split(",")[1] }
-      );
-      dispatch(setApiResponse(response));
-      dispatch(setFeedback(response.feature_data));
-      dispatch(
-        showAlert({ type: "success", message: "Image uploaded successfully!" })
-      );
+      setShowResponse(true);
+      const base_url = "https://84e8-27-6-193-65.ngrok-free.app";
+      const api = "/stylesense/api/feature_extraction/extract_features/";
+
+      await callApi(base_url + api, "POST", {
+        prod_img_bin_data: base64.split(",")[1],
+        description: "Image uploaded by the user",
+      });
     } catch (error) {
-      // Error handled in the custom hook
+      dispatch(showAlert({ type: "error", message: error.message }));
     } finally {
-      setLoading(false); // Stop shimmer effect
+      // setLoading(false); // Stop shimmer effect
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="relative">
-        <CustomAlert />
-        <ShimmerEffect />
-      </div>
-    );
-  }
-
-  if (apiResponse) {
-    return (
-      <div className="relative">
-        <CustomAlert />
-        <ApiResponse
-          apiResponse={apiResponse}
-          onUploadAnotherImage={() => {
-            dispatch(setApiResponse(null));
-            dispatch(clearImage());
-          }}
-        />
-      </div>
-    );
-  }
 
   const handleImageClear = () => {
     if (selectedImage) {
@@ -80,7 +49,7 @@ const MainPage = () => {
           message: "Image Remove successfully!",
         })
       );
-    }else{
+    } else {
       dispatch(
         showAlert({
           type: "info",
@@ -89,6 +58,22 @@ const MainPage = () => {
       );
     }
   };
+
+  if (showResponse) {
+    return (
+      <div className="relative size-full">
+        <CustomAlert />
+        <ApiResponse
+          apiResponse={{}}
+          onUploadAnotherImage={() => {
+            dispatch(clearImage());
+            setShowResponse(false);
+          }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="relative">
       <CustomAlert />
@@ -96,7 +81,10 @@ const MainPage = () => {
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Upload An Image
         </h2>
+
         <ImageUploader />
+
+        {/* buttons submit and clear */}
         <div className="flex gap-4">
           <button
             onClick={handleSubmit}

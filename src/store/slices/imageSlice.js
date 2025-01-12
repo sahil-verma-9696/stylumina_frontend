@@ -4,9 +4,9 @@ const initialState = {
   selectedImage: null,
   base64: "",
   preview: null, // For image preview
-  alert: null, // For alert messages
-  apiResponse: null, // For API response
-  isLoading: false, // For shimmer loader
+  // alert: null, // For alert messages
+  // apiResponse: null, // For API response
+  // isLoading: false, // For shimmer loader
 };
 
 const imageSlice = createSlice({
@@ -27,21 +27,16 @@ const imageSlice = createSlice({
       console.log(action.payload);
       state.preview = action.payload;
     },
-    showAlert(state, action) {
-      state.alert = action.payload;
-    },
-    clearAlert(state) {
-      state.alert = null;
-    },
-    setLoading(state, action) {
-      state.isLoading = action.payload;
-    },
-    setApiResponse(state, action) {
-      state.apiResponse = action.payload;
-    },
-    clearApiResponse(state) {
-      state.apiResponse = null;
-    },
+
+    // setLoading(state, action) {
+    //   state.isLoading = action.payload;
+    // },
+    // setApiResponse(state, action) {
+    //   state.apiResponse = action.payload;
+    // },
+    // clearApiResponse(state) {
+    //   state.apiResponse = null;
+    // },
   },
 });
 

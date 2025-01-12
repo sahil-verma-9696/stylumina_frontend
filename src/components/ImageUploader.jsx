@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setImage,
   setPreview,
-  showAlert,
-  clearAlert,
 } from "../store/slices/imageSlice";
+import { showAlert, clearAlert } from "../store/slices/alertSlice";
 
 const ImageUploader = () => {
   const dispatch = useDispatch();

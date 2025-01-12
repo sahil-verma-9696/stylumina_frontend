@@ -17,9 +17,9 @@ const useFeedback = () => {
 
       const response = await fetch(url, {
         method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
         body: feedbackData ? JSON.stringify(feedbackData) : null,
       });
 

@@ -46,7 +46,7 @@ const feedbackSlice = createSlice({
       }
     },
     clearFeedback(state) {
-      state.feedback = null;
+      state.feedback = {};
     },
     toggleFeedbackPopup(state, action) {
       state.toggleFeedback = !state.toggleFeedback;

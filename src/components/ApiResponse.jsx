@@ -1,58 +1,86 @@
 // components/ApiResponse.js
 
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import FeedbackPopup from "./FeedbackPopup";
+import {
+  setFeedback,
+  toggleFeedbackPopup,
+} from "../store/slices/feedbackSlice";
 
-const ApiResponse = ({ apiResponse, onUploadAnotherImage }) => {
-  const [feedback, setFeedback] = useState({}); // To store feedback for each feature
+const ApiResponse = ({ onUploadAnotherImage }) => {
+  const { preview, apiResponse } = useSelector((state) => state.image);
+  const { toggleFeedback, feedback } = useSelector((state) => state.feedback);
+  const dispatch = useDispatch();
 
-  // Destructure the watches from the API response
-  const watches = apiResponse.feature_data.Watches;
-
-  // Handle feedback submission
-  const handleFeedback = (featureName, feedbackText) => {
-    setFeedback({
-      ...feedback,
-      [featureName]: feedbackText,
-    });
-    alert(`Feedback for ${featureName} submitted: ${feedbackText}`);
+  const handleFeedbackToggle = () => {
+    dispatch(toggleFeedbackPopup());
   };
+  const handleFeedbackSubmit = () => {};
 
+  console.log(toggleFeedback);
   return (
     <>
-      <div className="flex">
+      <div className="flex h-[90vh]  justify-center items-center">
         {/* Left Side: Table */}
-        <div className="w-1/2 p-6 bg-white">
+        <div className="w-1/2 p-6 bg-white h-[90%] overflow-scroll">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
             Submission Successful
           </h2>
 
           {/* Table for displaying feature data */}
-          <table className="min-w-full table-auto">
+          <table className="w-full table-auto">
             <thead>
               <tr className="bg-gray-100">
                 <th className="px-4 py-2 text-left">Feature Name</th>
                 <th className="px-4 py-2 text-left">Feature Value</th>
                 <th className="px-4 py-2 text-left">Confidence Score (%)</th>
-                <th className="px-4 py-2 text-left">Feedback</th>
+                <th className="px-4 py-2 text-left">
+                  {toggleFeedback ? (
+                    <>
+                      <div
+                        className="w-full mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 cursor-pointer text-center"
+                        onClick={handleFeedbackToggle}
+                      >
+                        Close
+                      </div>
+                      <div
+                        className="w-full mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 cursor-pointer text-center"
+                        onClick={handleFeedbackSubmit}
+                      >
+                        Submit Feedback
+                      </div>
+                    </>
+                  ) : (
+                    "Feedback"
+                  )}
+                </th>
               </tr>
             </thead>
+
             <tbody>
-              {watches.map((watch, index) => (
+              {feedback[Object.keys(feedback)[0]]?.map((feature, index) => (
                 <tr key={index} className="border-b">
-                  <td className="px-4 py-2">{watch.feature_name}</td>
-                  <td className="px-4 py-2">{watch.feature_value}</td>
+                  <td className="px-4 py-2">{feature.feature_name}</td>
+                  <td className="px-4 py-2">{feature.feature_value}</td>
                   <td className="px-4 py-2">
-                    {(watch.confidence_score * 100).toFixed(2)}%
+                    {(feature.confidence_score * 100).toFixed(2)}%
                   </td>
                   <td className="px-4 py-2">
-                    <input
-                      type="text"
-                      className="px-2 py-1 border rounded"
-                      placeholder="Enter feedback"
-                      onBlur={(e) =>
-                        handleFeedback(watch.feature_name, e.target.value)
-                      }
-                    />
+                    {toggleFeedback ? (
+                      <FeedbackPopup
+                        category={Object.keys(feedback)[0]}
+                        feature_name={feature.feature_name}
+                        feature_value={feature.feature_value}
+                      />
+                    ) : (
+                      <div
+                        className="w-full mt-4 px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 cursor-pointer"
+                        onClick={handleFeedbackToggle}
+                      >
+                        Feedback
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}
@@ -61,12 +89,16 @@ const ApiResponse = ({ apiResponse, onUploadAnotherImage }) => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="w-1/2 p-6 bg-gray-100 flex items-center justify-center">
-          <img
-            src="https://via.placeholder.com/300" // Replace with your image URL
-            alt="Uploaded Image"
-            className="max-w-full h-auto rounded-lg"
-          />
+        <div className="w-1/2 h-full p-6  flex items-center justify-center">
+          {preview ? (
+            <img
+              src={preview}
+              alt="Preview"
+              className="max-w-full h-full rounded-lg shadow-md"
+            />
+          ) : (
+            <p>Drag & drop an image, or browse</p>
+          )}
         </div>
       </div>
 

@@ -14,6 +14,7 @@ const imageSlice = createSlice({
   initialState,
   reducers: {
     setImage(state, action) {
+      // console.log(action.payload);
       state.selectedImage = action.payload.image;
       state.base64 = action.payload.base64;
     },
@@ -23,6 +24,7 @@ const imageSlice = createSlice({
       state.preview = null;
     },
     setPreview(state, action) {
+      console.log(action.payload);
       state.preview = action.payload;
     },
     showAlert(state, action) {

@@ -24,7 +24,6 @@ const imageSlice = createSlice({
       state.preview = null;
     },
     setPreview(state, action) {
-      console.log(action.payload);
       state.preview = action.payload;
     },
 

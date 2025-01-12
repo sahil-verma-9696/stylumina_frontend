@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-  feedback: null,
+  isLoading: false, // To track loading state
+  error: null, // To store any error messages
+  feedback: {},
   toggleFeedback: false,
   isChangeValue: false,
 };
@@ -8,8 +10,40 @@ const feedbackSlice = createSlice({
   name: "feedback",
   initialState,
   reducers: {
+    setError(state, action) {
+      state.error = action.payload; // Set error message
+      state.isLoading = false; // Stop loading
+    },
+    startLoading(state) {
+      state.isLoading = true; // Set loading state to true
+      state.error = null; // Clear any previous errors
+    },
+    finishLoading(state) {
+      state.isLoading = false; // Set loading state to false
+    },
     setFeedback(state, action) {
-      state.feedback = action.payload;
+      const { message_type, message_data } = action.payload;
+
+      if (message_type === "related_products") {
+      } else {
+        if (message_data && message_data?.product_category && message_data?.feature_value) {
+          const confidence_score = message_data?.confidence_score;
+          const feature_name = message_data?.feature_name;
+          const feature_value = message_data?.feature_value;
+          const product_category = message_data?.product_category;
+
+          if (!state.feedback[product_category]) {
+            state.feedback[product_category] = [];
+          }
+
+          // Push the feature object into the array
+          state.feedback[product_category].push({
+            feature_name,
+            feature_value,
+            confidence_score,
+          });
+        }
+      }
     },
     clearFeedback(state) {
       state.feedback = null;
@@ -35,7 +69,7 @@ const feedbackSlice = createSlice({
         );
       }
     },
-    
+
     changeFeatureValue(state, action) {
       const { category, feature_name, new_value } = action.payload;
 
@@ -72,5 +106,9 @@ export const {
   changeFeatureValue,
   removeFeature,
   toggleChangeValue,
+  setError,
+  startLoading,
+  finishLoading,
+
 } = feedbackSlice.actions;
 export default feedbackSlice.reducer;

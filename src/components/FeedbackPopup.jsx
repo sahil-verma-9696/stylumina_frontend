@@ -33,6 +33,16 @@ const FeedbackPopup = ({ category, feature_name, feature_value }) => {
     dispatch(toggleChangeValue()); // Switch back to the default state
   };
 
+  // stylesense/api/feature_extraction/get_feedback/
+
+  // vcg16
+// resnet
+// vit
+// cv model
+// roberta
+// nlp model
+// nltk
+
   return (
     <div className="w-full h-full bg-red-100 flex text-nowrap justify-center items-center gap-4">
       {isChangeValue ? (

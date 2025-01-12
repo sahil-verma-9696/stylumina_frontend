@@ -88,3 +88,14 @@ const ImageUploader = () => {
 
 export default ImageUploader;
 ```
+
+
+
+
+{
+  "success": true, 
+  "event": "message", 
+  "message_type": "product_feature", 
+  "product_category": "Jeans", 
+  "product_feature": {"feature_name": "Composition", "feature_value": "", "confidence_score": 0}
+}

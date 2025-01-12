@@ -18,9 +18,9 @@ const useApiCall = () => {
 
       const response = await fetch(url, {
         method: method,
-        headers: {
-          "Content-Type": "text/event-stream",
-        },
+        // headers: {
+        //   "Content-Type": "text/event-stream",
+        // },
         body: body ? JSON.stringify(body) : null,
       });
 
